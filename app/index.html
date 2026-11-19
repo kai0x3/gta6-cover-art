@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Cover Studio — GTA 6-style cover art maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <header class="brand">
+      <h1>Vice Cover Studio</h1>
+      <p class="tagline">Your photo. Your caption. A Vice City poster.</p>
+    </header>
+
+    <div class="group">
+      <h2>1 · Photos</h2>
+      <label class="file-label">Add your photos
+        <input id="photo" type="file" accept="image/*" multiple>
+      </label>
+      <p id="photo-count" class="hint">No photos yet — add one, or try a sample below.</p>
+      <div id="photo-list" class="photo-list"></div>
+      <div class="samples">
+        <button id="sample-pier" type="button">Try sample: Pier</button>
+        <button id="sample-boulevard" type="button">Try sample: Boulevard</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>2 · Layout</h2>
+      <div id="layout-picker" class="picker"></div>
+    </div>
+
+    <div class="group">
+      <h2>3 · Colour grade</h2>
+      <div id="grade-picker" class="picker"></div>
+    </div>
+
+    <div class="group">
+      <h2>4 · Words</h2>
+      <label>Caption <input id="caption" type="text" maxlength="24" value="VICE CITY"></label>
+      <label>Subtitle <input id="subtitle" type="text" maxlength="30" value="sunset heist"></label>
+      <label>Badge <input id="badge" type="text" maxlength="20" value="VICE CITY • 2026"></label>
+      <label class="check"><input id="show-badge" type="checkbox" checked> Show badge ribbon</label>
+    </div>
+
+    <div class="group">
+      <h2>5 · Finish</h2>
+      <label>Heat <input id="heat" type="range" min="0" max="5" step="1" value="4"> <span id="heat-value">4 / 5</span></label>
+      <label class="check"><input id="grain" type="checkbox" checked> Film grain</label>
+      <label class="check"><input id="vignette" type="checkbox" checked> Vignette</label>
+      <label>Selected panel zoom <input id="zoom" type="range" min="1" max="4" step="0.05" value="1"> <span id="zoom-value">1.0×</span></label>
+      <button id="reset-panel" type="button">Reset selected panel</button>
+      <p class="hint">Click a panel to select it, drag to reposition the photo, scroll to zoom.</p>
+      <div class="history">
+        <button id="undo" type="button" disabled>Undo</button>
+        <button id="redo" type="button" disabled>Redo</button>
+      </div>
+    </div>
+
+    <div class="group export">
+      <h2>Export</h2>
+      <div id="size-picker" class="picker"></div>
+      <button id="export-all" type="button" class="primary">Export all three sizes</button>
+      <button id="export-one" type="button">Export this size only</button>
+      <p id="status" role="status"></p>
+    </div>
+
+    <p class="fineprint">Original art made on your machine. Photos never leave your computer.
+    Fonts: Anton &amp; Pacifico (SIL Open Font License, in app/fonts/).</p>
+  </section>
+
+  <section class="preview" aria-label="Live cover preview">
+    <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
